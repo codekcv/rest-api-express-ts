@@ -11,9 +11,7 @@ export async function isOwner(
   try {
     const { id } = req.params;
     const currentUserId = get(req, "identity._id") as string;
-    console.log(-1, req.identity);
 
-    console.log(0, currentUserId, id);
     if (!currentUserId) {
       return res.sendStatus(403);
     }
@@ -42,7 +40,6 @@ export const isAuthenticated = async (
     }
 
     const existingUser = await getUserBySessionToken(sessionToken);
-    console.log(123, existingUser);
 
     if (!existingUser) {
       return res.sendStatus(400);
